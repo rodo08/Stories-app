@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import StoriesList from "../components/StoriesList";
 
-interface Story {
+export interface Story {
   name: string;
-  content: string[];
+  title: string;
+  content: string; // un solo párrafo
   likes: number;
   comments: {
     writtenBy: string;

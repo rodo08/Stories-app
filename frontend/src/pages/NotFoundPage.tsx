@@ -1,4 +1,3 @@
-import React from "react";
 import { NotFoundIcon } from "../components/Icons";
 import { Link } from "react-router-dom";
 

@@ -1,24 +1,13 @@
 import { Link } from "react-router-dom";
 import useUser from "../hooks/useUser";
-
-interface Story {
-  name: string;
-  title: string;
-  content: string; // un solo párrafo
-  likes: number;
-  comments: {
-    writtenBy: string;
-    content: string;
-    date: string;
-  }[];
-}
+import type { Story } from "../pages/StoryListPage";
 
 interface StoriesListProps {
   stories: Story[];
 }
 
 const StoriesList = ({ stories }: StoriesListProps) => {
-  const { user, isLoading } = useUser();
+  const { user } = useUser();
   return (
     <>
       {user ? (
@@ -40,7 +29,7 @@ const StoriesList = ({ stories }: StoriesListProps) => {
             key={story.name}
             className="bg-[#ffffff] text-[#14213d] px-4 py-6 flex flex-col justify-between gap-4 shadow-xs rounded"
           >
-            <h3 className="font-bold text-xl">{story.name}</h3>
+            <h3 className="font-bold text-xl">{story.title}</h3>
             <p className="overflow-hidden">
               {story.content.substring(0, 100) + "..."}
             </p>

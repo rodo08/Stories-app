@@ -129,6 +129,7 @@ export const StoryPage = () => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const storyLoader = async ({ params }: LoaderFunctionArgs) => {
   const response = await axios.get(`/api/stories/${params.name}`);
   return response.data;
