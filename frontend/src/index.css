@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#e5e5e5];
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  @keyframes rotate {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+
+  .animate-rotate {
+    animation: rotate 4s linear infinite;
+  }
+}
