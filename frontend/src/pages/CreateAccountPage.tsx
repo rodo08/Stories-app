@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
@@ -18,7 +18,7 @@ const CreateAccountPage = () => {
       await createUserWithEmailAndPassword(getAuth(), email, password);
       navigate("/stories");
     } catch (e) {
-      setError(e.message);
+      setError((e as Error).message);
     }
   };
 

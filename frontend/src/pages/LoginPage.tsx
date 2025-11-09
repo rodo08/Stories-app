@@ -10,14 +10,10 @@ const LoginPage = () => {
 
   const login = async () => {
     try {
-      const signIn = await signInWithEmailAndPassword(
-        getAuth(),
-        email,
-        password
-      );
+      await signInWithEmailAndPassword(getAuth(), email, password);
       navigate("/stories");
     } catch (e) {
-      setError(e.message);
+      setError((e as Error).message);
     }
   };
 

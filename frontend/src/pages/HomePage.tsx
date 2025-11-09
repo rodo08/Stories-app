@@ -1,4 +1,3 @@
-import React from "react";
 import express from "../assets/express.png";
 import node from "../assets/node.svg";
 import mongoDb from "../assets/mongoDB.png";

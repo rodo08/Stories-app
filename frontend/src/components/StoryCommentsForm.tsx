@@ -13,7 +13,7 @@ interface CommentStoryProp {
 
 const StoryCommentsForm = ({ commentStory }: CommentStoryProp) => {
   const [contentText, setContentText] = useState("");
-  const { user, isLoading } = useUser();
+  const { user } = useUser();
 
   return (
     <form

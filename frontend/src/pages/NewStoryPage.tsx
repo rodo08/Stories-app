@@ -9,7 +9,7 @@ const NewStory = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
@@ -29,10 +29,13 @@ const NewStory = () => {
 
       navigate(`/stories/${newStory.name}`);
     } catch (e) {
-      console.log(e);
-      setMessage(
-        e.response?.data?.message || "Error creating story. Try again."
-      );
+      let errorMessage = "Error creating story. Try again.";
+
+      if (axios.isAxiosError(e)) {
+        errorMessage = e.response?.data?.message || errorMessage;
+      }
+
+      setMessage(errorMessage);
     } finally {
       setLoading(false);
     }
