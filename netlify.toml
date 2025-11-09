@@ -1,0 +1,7 @@
+[build]
+  base = "frontend"
+  command = "bun install && bun run build"
+  publish = "frontend/dist"
+
+[build.environment]
+  BUN_VERSION = "1.1.0"
