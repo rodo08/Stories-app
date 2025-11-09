@@ -8,6 +8,7 @@ import { Collection, Db, MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
 import admin from "firebase-admin";
 import type { ServiceAccount } from "firebase-admin";
+import cors from "cors";
 
 dotenv.config();
 
@@ -56,6 +57,27 @@ const dbConnection = async () => {
 
 const app: Express = express();
 app.use(express.json()); //now app can handle json
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://stories-mern-app.netlify.app",
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true, // if need send cookies or headers from auth
+  })
+);
+
+app.use(
+  cors({
+    origin: "https://stories-mern-app.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+  })
+);
 
 interface AuthRequest extends Request {
   user?: admin.auth.DecodedIdToken; //represents the user identity from firebase, has user id, email, etc
