@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/cors": "^2.8.19"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -21,7 +22,7 @@
     "ts-node": "^10.9.2"
   },
   "scripts": {
-    "start": "ts-node index.ts",
+    "start": "bun src/index.ts",
     "dev": "nodemon src/index.ts"
   }
 }
