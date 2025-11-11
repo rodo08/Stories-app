@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../data/api";
 import StoriesList from "../components/StoriesList";
 
 export interface Story {
@@ -21,7 +21,7 @@ const StoryListPage = () => {
   useEffect(() => {
     const fetchStories = async () => {
       try {
-        const response = await axios.get("/api/stories"); // necesitamos crear este endpoint
+        const response = await api.get("/stories"); // necesitamos crear este endpoint
         setStories(response.data);
       } catch (e) {
         console.error("Error fetching stories:", e);

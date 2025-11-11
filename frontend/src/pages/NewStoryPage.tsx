@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "../data/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +17,7 @@ const NewStory = () => {
     setMessage("");
 
     try {
-      const response = await axios.post("/api/stories/new-story", {
+      const response = await api.post("/stories/new-story", {
         name: storyTitle,
         content: storyContent,
       });
