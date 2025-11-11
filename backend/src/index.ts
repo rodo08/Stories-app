@@ -71,14 +71,6 @@ app.use(
   })
 );
 
-app.use(
-  cors({
-    origin: "https://stories-mern-app.netlify.app",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-  })
-);
-
 interface AuthRequest extends Request {
   user?: admin.auth.DecodedIdToken; //represents the user identity from firebase, has user id, email, etc
 }
