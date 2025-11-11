@@ -3,7 +3,7 @@ import {
   useParams,
   type LoaderFunctionArgs,
 } from "react-router-dom";
-import axios from "axios";
+import api from "../data/api";
 import { useEffect, useState } from "react";
 import StoryComments from "../components/StoryComments";
 import StoryCommentsForm from "../components/StoryCommentsForm";
@@ -47,7 +47,7 @@ export const StoryPage = () => {
     const token = await user.getIdToken();
     const headers = { authtoken: token };
 
-    const response = await axios.post(`/api/stories/${name}/like`, null, {
+    const response = await api.post(`/stories/${name}/like`, null, {
       headers,
     });
 
@@ -67,8 +67,8 @@ export const StoryPage = () => {
     const token = user && (await user.getIdToken());
     const headers = token ? { authtoken: token } : {};
 
-    const response = await axios.post(
-      `/api/stories/${name}/comments`,
+    const response = await api.post(
+      `/stories/${name}/comments`,
       {
         writtenBy: nameText,
         content: contentText,
@@ -131,6 +131,6 @@ export const StoryPage = () => {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const storyLoader = async ({ params }: LoaderFunctionArgs) => {
-  const response = await axios.get(`/api/stories/${params.name}`);
+  const response = await api.get(`/stories/${params.name}`);
   return response.data;
 };
